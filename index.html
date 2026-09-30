@@ -2,158 +2,409 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Family English Passport</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#edf6fb;color:#12385e}
-.app{max-width:520px;margin:auto;background:#fff;min-height:100vh;box-shadow:0 0 25px #bbb}
-.page{display:none;min-height:100vh;padding:24px 20px}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#edf5fa;
+  color:#12385e;
+}
+.app{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  background:white;
+  min-height:100vh;
+  box-shadow:0 0 25px rgba(0,0,0,.15);
+}
+.page{
+  display:none;
+  min-height:100vh;
+  padding:24px 20px;
+}
 .page.active{display:block}
 
-.cover,.final{background:linear-gradient(160deg,#07345d,#0c4b7c);color:white;text-align:center}
-.passport,.final-card{border:3px solid #dfbd68;border-radius:22px;padding:30px 20px;min-height:90vh}
-.cover h1,.final h1{color:#f0cb70;font-size:31px}
-.cover h2{color:#fff4d4}
-.globe{font-size:78px;margin:20px}
-.slogan{color:#f1d58d;font-size:18px;line-height:1.8}
+/* COVER */
+.cover,.final{
+  background:linear-gradient(160deg,#062f56,#0b4b7d);
+  color:white;
+  text-align:center;
+}
+.passport,.final-card{
+  border:3px solid #dfbd68;
+  border-radius:24px;
+  padding:28px 20px;
+  min-height:90vh;
+}
+.cover h1,.final h1{
+  color:#f2cf75;
+  margin-bottom:8px;
+}
+.cover h2{margin-top:5px}
+.plane{font-size:45px}
+.globe{font-size:78px;margin:20px 0}
+.slogan{
+  color:#f1d58d;
+  font-size:18px;
+  line-height:1.8;
+}
 
 .info{
- background:#fffaf0;color:#143b61;border-radius:18px;
- padding:20px;text-align:right;margin-top:25px
+  background:#fffaf0;
+  color:#143b61;
+  border-radius:18px;
+  padding:20px;
+  text-align:right;
+  margin-top:25px;
 }
-.info h3{text-align:center}
-input,select{
- width:100%;padding:13px;margin:6px 0 14px;border:1px solid #ccd8e3;
- border-radius:10px;font-size:16px
-}
-button{border:0;border-radius:14px;padding:15px;font-size:17px;cursor:pointer}
-.primary{width:100%;background:#0b477b;color:white;font-weight:bold;margin-top:15px}
-.prepared{margin-top:25px;line-height:1.8;color:#fff4d4}
+.info h3{text-align:center;margin-top:0}
+label{font-weight:bold}
 
+input,select{
+  width:100%;
+  padding:13px;
+  margin:7px 0 15px;
+  border:1px solid #cbd8e2;
+  border-radius:10px;
+  font-size:16px;
+  background:white;
+}
+
+button{
+  border:none;
+  border-radius:14px;
+  padding:15px;
+  font-size:16px;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.primary{
+  width:100%;
+  background:#0b477b;
+  color:white;
+  font-weight:bold;
+  margin-top:15px;
+}
+.primary:hover{background:#083a67}
+
+.prepared{
+  margin-top:25px;
+  line-height:1.8;
+  color:#fff3cf;
+}
+
+/* STATIONS */
 .header{text-align:center}
-.header h1{margin-bottom:4px}
+.header h1{margin-bottom:3px}
 .header h2{margin-top:0}
-.back{background:#e9f4fa;color:#12385e;float:left;padding:9px 14px}
 
 .station{
- display:flex;align-items:center;gap:14px;padding:17px;margin:12px 0;
- border-radius:18px;cursor:pointer;box-shadow:0 3px 10px #ddd
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px;
+  margin:12px 0;
+  border-radius:18px;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
 }
+.station:active{transform:scale(.99)}
+
 .icon{
- width:55px;height:55px;background:white;border-radius:50%;
- display:flex;align-items:center;justify-content:center;font-size:30px
+  width:55px;
+  height:55px;
+  flex:0 0 55px;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
 }
 .station h3,.station p{margin:3px}
-.s1{background:#ffe1e7}.s2{background:#def2ff}.s3{background:#e3f3d7}
-.s4{background:#eee3ff}.s5{background:#fff0c6}.s6{background:#ffded9}
 
-.progressBox{height:15px;background:#e2e8ec;border-radius:20px;overflow:hidden;margin-top:25px}
-.progress{height:100%;width:0;background:#42ad70;transition:.3s}
-.progressText{text-align:center;font-weight:bold;margin:8px}
+.s1{background:#ffe1e7}
+.s2{background:#def2ff}
+.s3{background:#e3f3d7}
+.s4{background:#eee3ff}
+.s5{background:#fff0c6}
+.s6{background:#ffded9}
 
-.lessonHead{text-align:center;clear:both;padding-top:15px}
+.progressBox{
+  height:15px;
+  background:#e1e8ed;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:25px;
+}
+.progress{
+  height:100%;
+  width:0%;
+  background:#42ad70;
+  transition:.3s;
+}
+.progressText{
+  text-align:center;
+  font-weight:bold;
+  margin:9px;
+}
+
+/* LESSON */
+.back{
+  background:#e8f3f9;
+  color:#12385e;
+  padding:9px 14px;
+  float:left;
+}
+.lessonHead{
+  text-align:center;
+  clear:both;
+  padding-top:15px;
+}
 .lessonIcon{font-size:55px}
-.phrase{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid #ddd}
-.speak{width:43px;height:43px;padding:0;border-radius:50%;background:#e4f2fb}
+.lessonHead h1{margin-bottom:4px}
+.lessonHead h2{margin-top:0}
+
+.phrase{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 4px;
+  border-bottom:1px solid #ddd;
+}
+.speak{
+  width:44px;
+  height:44px;
+  padding:0;
+  border-radius:50%;
+  background:#e4f2fb;
+}
 .phraseText{flex:1}
 .en{font-size:18px;font-weight:bold}
-.ar{font-size:16px;direction:rtl;margin-top:4px;color:#333}
+.ar{
+  font-size:16px;
+  direction:rtl;
+  margin-top:4px;
+  color:#333;
+}
 
-.quizBox{background:white;border-radius:20px;padding:20px;box-shadow:0 4px 15px #ddd}
-.question{text-align:center;font-size:20px;font-weight:bold;line-height:1.7}
-.option{width:100%;margin:9px 0;background:#f4f7fa;color:#15395c;border:1px solid #d6e0e7}
-.correct{background:#d9f5df!important;border:2px solid #48a864!important}
-.wrong{background:#ffe0e0!important;border:2px solid #d65d5d!important}
-.result{text-align:center;font-weight:bold;font-size:19px;margin-top:15px}
+/* QUIZ */
+.quizBox{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+.question{
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  line-height:1.7;
+  margin-bottom:15px;
+}
+.option{
+  width:100%;
+  margin:8px 0;
+  background:#f4f7fa;
+  color:#15395c;
+  border:1px solid #d6e0e7;
+}
+.correct{
+  background:#d9f5df!important;
+  border:2px solid #48a864!important;
+}
+.wrong{
+  background:#ffe0e0!important;
+  border:2px solid #d65d5d!important;
+}
+.result{
+  text-align:center;
+  font-weight:bold;
+  font-size:19px;
+  margin-top:15px;
+}
 
-.success{text-align:center;padding-top:75px}
+/* SUCCESS */
+.success{
+  text-align:center;
+  padding-top:70px;
+}
 .medal{font-size:95px}
 .stamp{
- display:inline-block;border:5px double #bd352d;color:#bd352d;
- padding:12px 18px;font-weight:bold;font-size:21px;transform:rotate(-5deg);margin:20px
+  display:inline-block;
+  border:5px double #bd352d;
+  color:#bd352d;
+  padding:12px 18px;
+  font-weight:bold;
+  font-size:20px;
+  transform:rotate(-5deg);
+  margin:20px;
 }
 
-.stamps{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}
+/* PASSPORT STAMPS */
+.stamps{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-top:30px;
+}
 .stampItem{text-align:center}
 .circle{
- width:88px;height:88px;margin:auto;border-radius:50%;
- border:4px dashed #aaa;display:flex;align-items:center;justify-content:center;
- font-size:37px;color:#aaa
+  width:88px;
+  height:88px;
+  margin:auto auto 7px;
+  border-radius:50%;
+  border:4px dashed #aaa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:37px;
+  color:#aaa;
 }
-.circle.done{border-color:#2d9954;color:#2d9954;background:#effcf2}
+.circle.done{
+  border-color:#2d9954;
+  color:#2d9954;
+  background:#effcf2;
+}
 
-.final-card{padding-top:45px}
-.trophy{font-size:85px}
+/* FINAL */
+.final-card{padding-top:35px}
+.trophy{font-size:80px}
 .certificate{
- background:#fff9e9;color:#12385e;border:2px solid #dfbd68;
- border-radius:18px;padding:22px;margin-top:25px
+  background:#fff9e9;
+  color:#12385e;
+  border:2px solid #dfbd68;
+  border-radius:18px;
+  padding:22px;
+  margin-top:25px;
 }
-.finalName{font-size:25px;font-weight:bold;margin:15px}
+.finalName{
+  font-size:25px;
+  font-weight:bold;
+  margin:15px;
+}
 .printBtn{
- width:100%;background:#e5c267;color:#07345d;font-weight:bold;
- margin-top:22px;font-size:18px
+  width:100%;
+  background:#e5c267;
+  color:#07345d;
+  font-weight:bold;
+  margin-top:22px;
+  font-size:18px;
 }
 .resetBtn{
- width:100%;background:white;color:#07345d;font-weight:bold;
- margin-top:12px
+  width:100%;
+  background:white;
+  color:#07345d;
+  font-weight:bold;
+  margin-top:12px;
 }
 
-/* PRINTABLE PASSPORT */
+/* PRINT PAGE */
 #printSheet{display:none}
 
 @media print{
- @page{size:A4 portrait;margin:8mm}
- body{background:white}
- .app{display:none!important}
 
- #printSheet{
-  display:block!important;
-  width:194mm;
-  min-height:278mm;
-  margin:auto;
-  background:#07345d!important;
-  color:white;
-  border:4px double #d9b65e;
-  padding:13mm;
-  text-align:center;
-  -webkit-print-color-adjust:exact;
-  print-color-adjust:exact
- }
+  @page{
+    size:A4 portrait;
+    margin:8mm;
+  }
 
- .printTitle{font-size:27pt;color:#f1cb70;margin:5mm 0 1mm}
- .printArabic{font-size:20pt;color:#fff3cd;margin:0 0 7mm}
+  body{background:white}
 
- .travelerCard{
-  background:#fffaf0!important;color:#14395e;border:2px solid #d9b65e;
-  border-radius:12px;padding:5mm;margin:5mm auto;text-align:center
- }
+  .app{display:none!important}
 
- .printName{font-size:20pt;font-weight:bold}
+  #printSheet{
+    display:block!important;
+    width:194mm;
+    min-height:278mm;
+    margin:0 auto;
+    padding:12mm;
+    text-align:center;
+    color:white;
+    background:#07345d!important;
+    border:4px double #d9b65e;
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
 
- .printStamps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;
-  margin:10mm 0
- }
+  .printTitle{
+    font-size:27pt;
+    color:#f1cb70;
+    font-weight:bold;
+    margin:4mm 0 1mm;
+  }
 
- .printStamp{text-align:center;color:white;font-size:11pt}
+  .printArabic{
+    font-size:20pt;
+    color:#fff3cd;
+    margin-bottom:6mm;
+  }
 
- .printCircle{
-  width:28mm;height:28mm;border-radius:50%;
-  border:3px double #d9b65e;margin:0 auto 3mm;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20pt;color:#d9b65e
- }
+  .travelerCard{
+    background:#fffaf0!important;
+    color:#14395e;
+    border:2px solid #d9b65e;
+    border-radius:12px;
+    padding:5mm;
+    margin:5mm auto;
+  }
 
- .printCongrats{
-  background:#fffaf0!important;color:#12385e;
-  border:2px solid #d9b65e;border-radius:12px;
-  padding:7mm;margin-top:8mm
- }
+  .printName{
+    font-size:20pt;
+    font-weight:bold;
+    margin:2mm;
+  }
 
- .printCongrats h2{color:#a37b21;font-size:20pt;margin:0 0 3mm}
- .printPrepared{margin-top:7mm;color:#f3d783;line-height:1.7}
+  .printStamps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7mm;
+    margin:8mm 0;
+  }
+
+  .printStamp{
+    text-align:center;
+    color:white;
+    font-size:10.5pt;
+  }
+
+  .printCircle{
+    width:28mm;
+    height:28mm;
+    border-radius:50%;
+    border:3px double #d9b65e;
+    margin:0 auto 3mm;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20pt;
+    color:#d9b65e;
+  }
+
+  .printCongrats{
+    background:#fffaf0!important;
+    color:#12385e;
+    border:2px solid #d9b65e;
+    border-radius:12px;
+    padding:6mm;
+    margin-top:6mm;
+  }
+
+  .printCongrats h2{
+    color:#a37b21;
+    margin:0 0 3mm;
+  }
+
+  .printPrepared{
+    margin-top:6mm;
+    color:#f3d783;
+    line-height:1.7;
+  }
 }
 </style>
 </head>
@@ -162,347 +413,1454 @@ button{border:0;border-radius:14px;padding:15px;font-size:17px;cursor:pointer}
 
 <div class="app">
 
+<!-- COVER -->
 <section id="cover" class="page cover active">
-<div class="passport">
-<div style="font-size:45px">✈️</div>
-<h1>FAMILY ENGLISH PASSPORT</h1>
-<h2>جواز الإنجليزية في أسرتي</h2>
-<div class="globe">🌍</div>
-<div class="slogan">Learn Together • Grow Together<br>نتعلم معًا... لنكبر معًا</div>
+  <div class="passport">
 
-<div class="info">
-<h3>Traveler Information | بيانات المسافر</h3>
+    <div class="plane">✈️</div>
 
-<label>Name | الاسم</label>
-<input id="travelerName" placeholder="اكتب اسمك">
+    <h1>FAMILY ENGLISH PASSPORT</h1>
+    <h2>جواز الإنجليزية في أسرتي</h2>
 
-<label>Family Member | صلة القرابة</label>
-<select id="relation">
-<option value="">Select | اختر</option>
-<option>Mother | الأم</option>
-<option>Father | الأب</option>
-<option>Sister | الأخت</option>
-<option>Brother | الأخ</option>
-<option>Grandmother | الجدة</option>
-<option>Grandfather | الجد</option>
-<option>Other | أخرى</option>
-</select>
+    <div class="globe">🌍</div>
 
-<label>Start Date | تاريخ بدء الرحلة</label>
-<input id="startDate" type="date">
+    <div class="slogan">
+      Learn Together • Grow Together<br>
+      نتعلم معًا... لنكبر معًا
+    </div>
 
-<button class="primary" onclick="startJourney()">✈️ Start the Journey | ابدأ الرحلة</button>
-</div>
+    <div class="info">
 
-<div class="prepared">
-Prepared by | إعداد الطالبة<br>
-<strong>ميان ماجد محزري</strong><br>
-Class | الصف: خامس / ٢
-</div>
-</div>
+      <h3>
+        Traveler Information |
+        بيانات المسافر
+      </h3>
+
+      <label>Name | الاسم</label>
+      <input
+        id="travelerName"
+        type="text"
+        placeholder="اكتب اسمك"
+      >
+
+      <label>Family Member | صلة القرابة</label>
+
+      <select id="relation">
+        <option value="">Select | اختر</option>
+        <option value="Mother | الأم">Mother | الأم</option>
+        <option value="Father | الأب">Father | الأب</option>
+        <option value="Sister | الأخت">Sister | الأخت</option>
+        <option value="Brother | الأخ">Brother | الأخ</option>
+        <option value="Grandmother | الجدة">Grandmother | الجدة</option>
+        <option value="Grandfather | الجد">Grandfather | الجد</option>
+        <option value="Other | أخرى">Other | أخرى</option>
+      </select>
+
+      <label>Start Date | تاريخ بدء الرحلة</label>
+
+      <input id="startDate" type="date">
+
+      <button
+        id="startJourneyBtn"
+        class="primary"
+        type="button">
+        ✈️ Start the Journey | ابدأ الرحلة
+      </button>
+
+    </div>
+
+    <div class="prepared">
+      Prepared by | إعداد الطالبة<br>
+      <strong>ميان ماجد محزري</strong><br>
+      Class | الصف: خامس / ٢
+    </div>
+
+  </div>
 </section>
 
+
+<!-- STATIONS -->
 <section id="stations" class="page">
-<div class="header"><h1>Passport Stations</h1><h2>محطات الجواز</h2></div>
 
-<div class="station s1" onclick="openLesson(0)"><div class="icon">👋</div><div><h3>1. Greetings</h3><p>التحية</p></div></div>
-<div class="station s2" onclick="openLesson(1)"><div class="icon">🙋</div><div><h3>2. Introduce Yourself</h3><p>التعريف بالنفس</p></div></div>
-<div class="station s3" onclick="openLesson(2)"><div class="icon">🏠</div><div><h3>3. English at Home</h3><p>الإنجليزية في المنزل</p></div></div>
-<div class="station s4" onclick="openLesson(3)"><div class="icon">💬</div><div><h3>4. Daily Words</h3><p>الكلمات اليومية</p></div></div>
-<div class="station s5" onclick="openLesson(4)"><div class="icon">❓</div><div><h3>5. Ask & Request</h3><p>السؤال والطلب</p></div></div>
-<div class="station s6" onclick="openLesson(5)"><div class="icon">🆘</div><div><h3>6. Essential English</h3><p>الإنجليزية للمواقف المهمة</p></div></div>
+  <div class="header">
+    <h1>Passport Stations</h1>
+    <h2>محطات الجواز</h2>
+  </div>
 
-<div class="progressBox"><div id="progressBar" class="progress"></div></div>
-<div id="progressText" class="progressText"></div>
+  <div class="station s1" data-station="0">
+    <div class="icon">👋</div>
+    <div>
+      <h3>1. Greetings</h3>
+      <p>التحية</p>
+    </div>
+  </div>
 
-<button class="primary" onclick="showPassport()">🛂 My Passport | جوازي</button>
+  <div class="station s2" data-station="1">
+    <div class="icon">🙋</div>
+    <div>
+      <h3>2. Introduce Yourself</h3>
+      <p>التعريف بالنفس</p>
+    </div>
+  </div>
+
+  <div class="station s3" data-station="2">
+    <div class="icon">🏠</div>
+    <div>
+      <h3>3. English at Home</h3>
+      <p>الإنجليزية في المنزل</p>
+    </div>
+  </div>
+
+  <div class="station s4" data-station="3">
+    <div class="icon">💬</div>
+    <div>
+      <h3>4. Daily Words</h3>
+      <p>الكلمات اليومية</p>
+    </div>
+  </div>
+
+  <div class="station s5" data-station="4">
+    <div class="icon">❓</div>
+    <div>
+      <h3>5. Ask & Request</h3>
+      <p>السؤال والطلب</p>
+    </div>
+  </div>
+
+  <div class="station s6" data-station="5">
+    <div class="icon">🆘</div>
+    <div>
+      <h3>6. Essential English</h3>
+      <p>الإنجليزية للمواقف المهمة</p>
+    </div>
+  </div>
+
+  <div class="progressBox">
+    <div id="progressBar" class="progress"></div>
+  </div>
+
+  <div id="progressText" class="progressText"></div>
+
+  <button
+    id="myPassportBtn"
+    class="primary"
+    type="button">
+    🛂 My Passport | جوازي
+  </button>
+
 </section>
 
+
+<!-- LESSON -->
 <section id="lesson" class="page">
-<button class="back" onclick="showPage('stations')">←</button>
-<div class="lessonHead">
-<div id="lessonIcon" class="lessonIcon"></div>
-<h1 id="lessonEnglish"></h1>
-<h2 id="lessonArabic"></h2>
-</div>
-<div id="phrases"></div>
-<button class="primary" onclick="startChallenge()">⭐ Take the Challenge | ابدأ التحدي</button>
+
+  <button
+    id="backToStationsBtn"
+    class="back"
+    type="button">
+    ←
+  </button>
+
+  <div class="lessonHead">
+
+    <div id="lessonIcon" class="lessonIcon"></div>
+
+    <h1 id="lessonEnglish"></h1>
+    <h2 id="lessonArabic"></h2>
+
+  </div>
+
+  <div id="phrases"></div>
+
+  <button
+    id="challengeBtn"
+    class="primary"
+    type="button">
+    ⭐ Take the Challenge | ابدأ التحدي
+  </button>
+
 </section>
 
+
+<!-- QUIZ -->
 <section id="quiz" class="page">
-<button class="back" onclick="showPage('lesson')">←</button>
-<div class="header"><h1 id="challengeTitle"></h1><h2>تحدي المحطة</h2></div>
-<div class="quizBox">
-<div id="question" class="question"></div>
-<div id="options"></div>
-<div id="result" class="result"></div>
-</div>
+
+  <button
+    id="backToLessonBtn"
+    class="back"
+    type="button">
+    ←
+  </button>
+
+  <div class="header">
+    <h1 id="challengeTitle"></h1>
+    <h2>تحدي المحطة</h2>
+  </div>
+
+  <div class="quizBox">
+
+    <div id="question" class="question"></div>
+
+    <div id="options"></div>
+
+    <div id="result" class="result"></div>
+
+  </div>
+
 </section>
 
+
+<!-- SUCCESS -->
 <section id="success" class="page success">
-<div class="medal">🏅</div>
-<h1>Great Job!</h1>
-<h2>أحسنت!</h2>
-<div class="stamp">STATION COMPLETED<br>تم اجتياز المحطة</div>
-<button class="primary" onclick="nextStation()">✈️ Go to Next Station | المحطة التالية</button>
+
+  <div class="medal">🏅</div>
+
+  <h1>Great Job!</h1>
+  <h2>أحسنت!</h2>
+
+  <div class="stamp">
+    STATION COMPLETED<br>
+    تم اجتياز المحطة
+  </div>
+
+  <button
+    id="nextStationBtn"
+    class="primary"
+    type="button">
+    ✈️ Go to Next Station | المحطة التالية
+  </button>
+
 </section>
 
+
+<!-- MY PASSPORT -->
 <section id="passportPage" class="page">
-<button class="back" onclick="showPage('stations')">←</button>
-<div class="header"><h1>My Passport</h1><h2>جوازي</h2></div>
-<div id="stampGrid" class="stamps"></div>
-<div class="progressBox"><div id="passportProgress" class="progress"></div></div>
-<div id="passportProgressText" class="progressText"></div>
-<button id="finishButton" class="primary" style="display:none" onclick="showFinal()">🏆 Complete My Journey | إنهاء الرحلة</button>
+
+  <button
+    id="passportBackBtn"
+    class="back"
+    type="button">
+    ←
+  </button>
+
+  <div class="header">
+    <h1>My Passport</h1>
+    <h2>جوازي</h2>
+  </div>
+
+  <div id="stampGrid" class="stamps"></div>
+
+  <div class="progressBox">
+    <div id="passportProgress" class="progress"></div>
+  </div>
+
+  <div
+    id="passportProgressText"
+    class="progressText">
+  </div>
+
+  <button
+    id="finishButton"
+    class="primary"
+    type="button"
+    style="display:none">
+    🏆 Complete My Journey | إنهاء الرحلة
+  </button>
+
 </section>
 
+
+<!-- FINAL -->
 <section id="final" class="page final">
-<div class="final-card">
-<div class="trophy">🏆</div>
-<h1>Congratulations!</h1>
-<h2>تهانينا!</h2>
-<p>You have completed your<br><strong>Family English Passport</strong></p>
-<p>لقد أتممت رحلة جواز الإنجليزية في الأسرة بنجاح</p>
 
-<div class="certificate">
-<strong>Family English Ambassador</strong><br>
-سفير / سفيرة الإنجليزية في الأسرة
-<div id="finalName" class="finalName"></div>
-<hr>
-بإشراف سفيرة الأسرة
-<div class="finalName">ميان ماجد محزري</div>
-الصف: خامس / ٢
-</div>
+  <div class="final-card">
 
-<button class="printBtn" onclick="printPassport()">🖨️ Print My Passport | طباعة جوازي</button>
-<button class="resetBtn" onclick="newPassport()">🔄 Start a New Passport | بدء جواز جديد</button>
+    <div class="trophy">🏆</div>
 
-<p style="color:#f1cb70;margin-top:25px">
-Small Steps • Big Dreams<br>
-خطوات صغيرة... أحلام كبيرة
-</p>
-</div>
+    <h1>Congratulations!</h1>
+    <h2>تهانينا!</h2>
+
+    <p>
+      You have completed your<br>
+      <strong>Family English Passport</strong>
+    </p>
+
+    <p>
+      لقد أتممت رحلة جواز الإنجليزية
+      في الأسرة بنجاح
+    </p>
+
+    <div class="certificate">
+
+      <strong>
+        Family English Ambassador
+      </strong>
+
+      <br>
+
+      سفير / سفيرة الإنجليزية في الأسرة
+
+      <div
+        id="finalName"
+        class="finalName">
+      </div>
+
+      <hr>
+
+      بإشراف سفيرة الأسرة
+
+      <div class="finalName">
+        ميان ماجد محزري
+      </div>
+
+      الصف: خامس / ٢
+
+    </div>
+
+    <button
+      id="printBtn"
+      class="printBtn"
+      type="button">
+      🖨️ Print My Passport | طباعة جوازي
+    </button>
+
+    <button
+      id="newPassportBtn"
+      class="resetBtn"
+      type="button">
+      🔄 Start a New Passport | بدء جواز جديد
+    </button>
+
+    <p style="color:#f1cb70;margin-top:25px">
+      Small Steps • Big Dreams<br>
+      خطوات صغيرة... أحلام كبيرة
+    </p>
+
+  </div>
+
 </section>
 
 </div>
 
-<!-- A4 PRINT PAGE -->
+
+<!-- PRINTABLE A4 PASSPORT -->
+
 <div id="printSheet">
-<div style="font-size:30pt">✈️ 🌍</div>
-<div class="printTitle">FAMILY ENGLISH PASSPORT</div>
-<div class="printArabic">جواز الإنجليزية في أسرتي</div>
 
-<div class="travelerCard">
-<div>Traveler | المسافر</div>
-<div id="printName" class="printName"></div>
-<div id="printRelation"></div>
-<div id="printDate"></div>
+  <div style="font-size:30pt">
+    ✈️ 🌍
+  </div>
+
+  <div class="printTitle">
+    FAMILY ENGLISH PASSPORT
+  </div>
+
+  <div class="printArabic">
+    جواز الإنجليزية في أسرتي
+  </div>
+
+  <div class="travelerCard">
+
+    <div>
+      Traveler | المسافر
+    </div>
+
+    <div
+      id="printName"
+      class="printName">
+    </div>
+
+    <div id="printRelation"></div>
+
+    <div id="printDate"></div>
+
+  </div>
+
+
+  <h2>
+    Passport Stamps | أختام الرحلة
+  </h2>
+
+
+  <div class="printStamps">
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      Greetings<br>
+      التحية
+    </div>
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      Introduce Yourself<br>
+      التعريف بالنفس
+    </div>
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      English at Home<br>
+      الإنجليزية في المنزل
+    </div>
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      Daily Words<br>
+      الكلمات اليومية
+    </div>
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      Ask & Request<br>
+      السؤال والطلب
+    </div>
+
+    <div class="printStamp">
+      <div class="printCircle">✓</div>
+      Essential English<br>
+      المواقف المهمة
+    </div>
+
+  </div>
+
+
+  <div class="printCongrats">
+
+    <h2>
+      Congratulations! | تهانينا!
+    </h2>
+
+    You have successfully completed your
+    Family English Passport
+
+    <br><br>
+
+    لقد أتممت رحلة جواز الإنجليزية
+    في الأسرة بنجاح
+
+  </div>
+
+
+  <div class="printPrepared">
+
+    English Ambassador |
+    سفيرة الإنجليزية
+
+    <br>
+
+    <strong>
+      ميان ماجد محزري
+    </strong>
+
+    <br>
+
+    Class | الصف: خامس / ٢
+
+  </div>
+
 </div>
 
-<h2>Passport Stamps | أختام الرحلة</h2>
-
-<div class="printStamps">
-<div class="printStamp"><div class="printCircle">✓</div>Greetings<br>التحية</div>
-<div class="printStamp"><div class="printCircle">✓</div>Introduce Yourself<br>التعريف بالنفس</div>
-<div class="printStamp"><div class="printCircle">✓</div>English at Home<br>الإنجليزية في المنزل</div>
-<div class="printStamp"><div class="printCircle">✓</div>Daily Words<br>الكلمات اليومية</div>
-<div class="printStamp"><div class="printCircle">✓</div>Ask & Request<br>السؤال والطلب</div>
-<div class="printStamp"><div class="printCircle">✓</div>Essential English<br>المواقف المهمة</div>
-</div>
-
-<div class="printCongrats">
-<h2>Congratulations! | تهانينا!</h2>
-You have successfully completed your Family English Passport
-<br>
-لقد أتممت رحلة جواز الإنجليزية في الأسرة بنجاح
-</div>
-
-<div class="printPrepared">
-English Ambassador | سفيرة الإنجليزية<br>
-<strong>ميان ماجد محزري</strong><br>
-Class | الصف: خامس / ٢
-</div>
-</div>
 
 <script>
-const stations=[
+
+/* ==============================
+   DATA
+============================== */
+
+const stationsData = [
+
 {
-en:"Greetings",ar:"التحية",icon:"👋",
-phrases:[["Hello","مرحبًا"],["Good morning","صباح الخير"],["Good afternoon","مساء الخير"],["Good evening","مساء الخير"],["Goodbye","مع السلامة"],["How are you?","كيف حالك؟"],["I'm fine, thank you.","أنا بخير، شكرًا لك."]],
-q:"What do you say in the morning?<br>ماذا تقول في الصباح؟",
-o:["Good night","Good morning","Goodbye"],a:1
+  en:"Greetings",
+  ar:"التحية",
+  icon:"👋",
+
+  phrases:[
+    ["Hello","مرحبًا"],
+    ["Good morning","صباح الخير"],
+    ["Good afternoon","مساء الخير"],
+    ["Good evening","مساء الخير"],
+    ["Goodbye","مع السلامة"],
+    ["How are you?","كيف حالك؟"],
+    ["I'm fine, thank you.","أنا بخير، شكرًا لك."]
+  ],
+
+  question:
+  "What do you say in the morning?<br>ماذا تقول في الصباح؟",
+
+  options:[
+    "Good night",
+    "Good morning",
+    "Goodbye"
+  ],
+
+  answer:1
 },
+
 {
-en:"Introduce Yourself",ar:"التعريف بالنفس",icon:"🙋",
-phrases:[["My name is...","اسمي..."],["I am from Saudi Arabia.","أنا من المملكة العربية السعودية."],["I am a student.","أنا طالب / طالبة."],["Nice to meet you.","سعيد / سعيدة بلقائك."],["What is your name?","ما اسمك؟"]],
-q:"How do you introduce your name?<br>كيف تعرّف باسمك؟",
-o:["Goodbye","My name is...","Thank you"],a:1
+  en:"Introduce Yourself",
+  ar:"التعريف بالنفس",
+  icon:"🙋",
+
+  phrases:[
+    ["My name is...","اسمي..."],
+    ["I am from Saudi Arabia.","أنا من المملكة العربية السعودية."],
+    ["I am a student.","أنا طالب / طالبة."],
+    ["Nice to meet you.","سعيد / سعيدة بلقائك."],
+    ["What is your name?","ما اسمك؟"]
+  ],
+
+  question:
+  "How do you introduce your name?<br>كيف تعرّف باسمك؟",
+
+  options:[
+    "Goodbye",
+    "My name is...",
+    "Thank you"
+  ],
+
+  answer:1
 },
+
 {
-en:"English at Home",ar:"الإنجليزية في المنزل",icon:"🏠",
-phrases:[["Come here","تعال هنا"],["Sit down","اجلس"],["Let's eat","هيا نأكل"],["Can you help me?","هل يمكنك مساعدتي؟"],["Open the door","افتح الباب"],["Close the door","أغلق الباب"]],
-q:"How do you ask someone to help you?<br>كيف تطلب من شخص مساعدتك؟",
-o:["Can you help me?","Good morning","Goodbye"],a:0
+  en:"English at Home",
+  ar:"الإنجليزية في المنزل",
+  icon:"🏠",
+
+  phrases:[
+    ["Come here","تعال هنا"],
+    ["Sit down","اجلس"],
+    ["Let's eat","هيا نأكل"],
+    ["Can you help me?","هل يمكنك مساعدتي؟"],
+    ["Open the door","افتح الباب"],
+    ["Close the door","أغلق الباب"]
+  ],
+
+  question:
+  "How do you ask someone to help you?<br>كيف تطلب من شخص مساعدتك؟",
+
+  options:[
+    "Can you help me?",
+    "Good morning",
+    "Goodbye"
+  ],
+
+  answer:0
 },
+
 {
-en:"Daily Words",ar:"الكلمات اليومية",icon:"💬",
-phrases:[["Please","من فضلك"],["Thank you","شكرًا لك"],["Sorry","آسف / آسفة"],["Excuse me","عذرًا"],["You're welcome","على الرحب والسعة"],["Yes","نعم"],["No","لا"]],
-q:"What do you say when someone helps you?<br>ماذا تقول عندما يساعدك شخص؟",
-o:["Sorry","Thank you","Goodbye"],a:1
+  en:"Daily Words",
+  ar:"الكلمات اليومية",
+  icon:"💬",
+
+  phrases:[
+    ["Please","من فضلك"],
+    ["Thank you","شكرًا لك"],
+    ["Sorry","آسف / آسفة"],
+    ["Excuse me","عذرًا"],
+    ["You're welcome","على الرحب والسعة"],
+    ["Yes","نعم"],
+    ["No","لا"]
+  ],
+
+  question:
+  "What do you say when someone helps you?<br>ماذا تقول عندما يساعدك شخص؟",
+
+  options:[
+    "Sorry",
+    "Thank you",
+    "Goodbye"
+  ],
+
+  answer:1
 },
+
 {
-en:"Ask & Request",ar:"السؤال والطلب",icon:"❓",
-phrases:[["Where is...?","أين...؟"],["Can I have...?","هل يمكنني الحصول على...؟"],["How much is this?","كم سعر هذا؟"],["Can you help me?","هل يمكنك مساعدتي؟"],["I would like...","أود..."]],
-q:"How do you ask about a place?<br>كيف تسأل عن مكان؟",
-o:["Where is...?","Thank you","Sit down"],a:0
+  en:"Ask & Request",
+  ar:"السؤال والطلب",
+  icon:"❓",
+
+  phrases:[
+    ["Where is...?","أين...؟"],
+    ["Can I have...?","هل يمكنني الحصول على...؟"],
+    ["How much is this?","كم سعر هذا؟"],
+    ["Can you help me?","هل يمكنك مساعدتي؟"],
+    ["I would like...","أود..."]
+  ],
+
+  question:
+  "How do you ask about a place?<br>كيف تسأل عن مكان؟",
+
+  options:[
+    "Where is...?",
+    "Thank you",
+    "Sit down"
+  ],
+
+  answer:0
 },
+
 {
-en:"Essential English",ar:"الإنجليزية للمواقف المهمة",icon:"🆘",
-phrases:[["I need help","أحتاج إلى المساعدة"],["Call an ambulance","اتصل بالإسعاف"],["I am lost","أنا تائه / تائهة"],["I don't understand","أنا لا أفهم"],["Where is the hospital?","أين المستشفى؟"],["Please call my family","من فضلك اتصل بعائلتي"]],
-q:"What do you say when you need help?<br>ماذا تقول عندما تحتاج إلى المساعدة؟",
-o:["I need help","Good evening","Let's eat"],a:0
+  en:"Essential English",
+  ar:"الإنجليزية للمواقف المهمة",
+  icon:"🆘",
+
+  phrases:[
+    ["I need help","أحتاج إلى المساعدة"],
+    ["Call an ambulance","اتصل بالإسعاف"],
+    ["I am lost","أنا تائه / تائهة"],
+    ["I don't understand","أنا لا أفهم"],
+    ["Where is the hospital?","أين المستشفى؟"],
+    ["Please call my family","من فضلك اتصل بعائلتي"]
+  ],
+
+  question:
+  "What do you say when you need help?<br>ماذا تقول عندما تحتاج إلى المساعدة؟",
+
+  options:[
+    "I need help",
+    "Good evening",
+    "Let's eat"
+  ],
+
+  answer:0
 }
+
 ];
 
-let current=0;
-let completed=JSON.parse(localStorage.getItem("englishPassportCompleted"))||[false,false,false,false,false,false];
 
-function showPage(id){
- document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- window.scrollTo(0,0);
+/* ==============================
+   VARIABLES
+============================== */
+
+let currentStation = 0;
+
+let completedStations;
+
+try{
+
+  const saved =
+    JSON.parse(
+      localStorage.getItem(
+        "englishPassportCompleted"
+      )
+    );
+
+  if(
+    Array.isArray(saved) &&
+    saved.length === 6
+  ){
+    completedStations = saved;
+  }else{
+    completedStations =
+      [false,false,false,false,false,false];
+  }
+
+}catch(error){
+
+  completedStations =
+    [false,false,false,false,false,false];
+
 }
+
+
+/* ==============================
+   ELEMENTS
+============================== */
+
+const travelerName =
+  document.getElementById("travelerName");
+
+const relation =
+  document.getElementById("relation");
+
+const startDate =
+  document.getElementById("startDate");
+
+const progressBar =
+  document.getElementById("progressBar");
+
+const progressText =
+  document.getElementById("progressText");
+
+const lessonIcon =
+  document.getElementById("lessonIcon");
+
+const lessonEnglish =
+  document.getElementById("lessonEnglish");
+
+const lessonArabic =
+  document.getElementById("lessonArabic");
+
+const phrasesBox =
+  document.getElementById("phrases");
+
+const challengeTitle =
+  document.getElementById("challengeTitle");
+
+const questionBox =
+  document.getElementById("question");
+
+const optionsBox =
+  document.getElementById("options");
+
+const resultBox =
+  document.getElementById("result");
+
+const stampGrid =
+  document.getElementById("stampGrid");
+
+const passportProgress =
+  document.getElementById("passportProgress");
+
+const passportProgressText =
+  document.getElementById(
+    "passportProgressText"
+  );
+
+const finishButton =
+  document.getElementById("finishButton");
+
+const finalName =
+  document.getElementById("finalName");
+
+const printName =
+  document.getElementById("printName");
+
+const printRelation =
+  document.getElementById("printRelation");
+
+const printDate =
+  document.getElementById("printDate");
+
+
+/* ==============================
+   PAGE CONTROL
+============================== */
+
+function showPage(pageId){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(page){
+      page.classList.remove("active");
+    });
+
+  const target =
+    document.getElementById(pageId);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* ==============================
+   START JOURNEY
+============================== */
 
 function startJourney(){
- let name=document.getElementById("travelerName").value.trim();
- if(!name){alert("فضلاً اكتب اسم المسافر | Please enter your name");return}
 
- localStorage.setItem("passportName",name);
- localStorage.setItem("passportRelation",document.getElementById("relation").value);
- localStorage.setItem("passportDate",document.getElementById("startDate").value);
- updateProgress();
- showPage("stations");
+  const name =
+    travelerName.value.trim();
+
+  if(name === ""){
+
+    alert(
+      "فضلاً اكتب اسم المسافر\nPlease enter your name"
+    );
+
+    travelerName.focus();
+
+    return;
+  }
+
+  localStorage.setItem(
+    "passportName",
+    name
+  );
+
+  localStorage.setItem(
+    "passportRelation",
+    relation.value
+  );
+
+  localStorage.setItem(
+    "passportDate",
+    startDate.value
+  );
+
+  updateProgress();
+
+  showPage("stations");
 }
 
-function openLesson(i){
- current=i;
- let s=stations[i];
- lessonIcon.innerHTML=s.icon;
- lessonEnglish.innerHTML=(i+1)+". "+s.en;
- lessonArabic.innerHTML=s.ar;
- phrases.innerHTML="";
 
- s.phrases.forEach(p=>{
-  let d=document.createElement("div");
-  d.className="phrase";
-  d.innerHTML=<button class="speak">🔊</button><div class="phraseText"><div class="en">${p[0]}</div><div class="ar">${p[1]}</div></div>;
-  d.querySelector("button").onclick=()=>speak(p[0]);
-  phrases.appendChild(d);
- });
- showPage("lesson");
+/* ==============================
+   LESSON
+============================== */
+
+function openLesson(index){
+
+  currentStation = index;
+
+  const station =
+    stationsData[index];
+
+  lessonIcon.textContent =
+    station.icon;
+
+  lessonEnglish.textContent =
+    (index + 1) + ". " + station.en;
+
+  lessonArabic.textContent =
+    station.ar;
+
+  phrasesBox.innerHTML = "";
+
+  station.phrases.forEach(
+    function(item){
+
+      const row =
+        document.createElement("div");
+
+      row.className = "phrase";
+
+      const audioButton =
+        document.createElement("button");
+
+      audioButton.className = "speak";
+      audioButton.type = "button";
+      audioButton.textContent = "🔊";
+
+      audioButton.addEventListener(
+        "click",
+        function(){
+          speakEnglish(item[0]);
+        }
+      );
+
+      const text =
+        document.createElement("div");
+
+      text.className =
+        "phraseText";
+
+      const english =
+        document.createElement("div");
+
+      english.className = "en";
+      english.textContent = item[0];
+
+      const arabic =
+        document.createElement("div");
+
+      arabic.className = "ar";
+      arabic.textContent = item[1];
+
+      text.appendChild(english);
+      text.appendChild(arabic);
+
+      row.appendChild(audioButton);
+      row.appendChild(text);
+
+      phrasesBox.appendChild(row);
+
+    }
+  );
+
+  showPage("lesson");
 }
 
-function speak(text){
- if("speechSynthesis" in window){
-  speechSynthesis.cancel();
-  let u=new SpeechSynthesisUtterance(text);
-  u.lang="en-US";u.rate=.8;speechSynthesis.speak(u);
- }
+
+/* ==============================
+   SPEECH
+============================== */
+
+function speakEnglish(text){
+
+  if(
+    "speechSynthesis" in window &&
+    "SpeechSynthesisUtterance" in window
+  ){
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+      new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-US";
+    speech.rate = 0.8;
+
+    window.speechSynthesis.speak(
+      speech
+    );
+
+  }else{
+
+    alert(
+      "ميزة الصوت غير مدعومة في هذا المتصفح."
+    );
+
+  }
 }
+
+
+/* ==============================
+   CHALLENGE
+============================== */
 
 function startChallenge(){
- let s=stations[current];
- challengeTitle.innerHTML="Challenge "+(current+1);
- question.innerHTML=s.q;
- options.innerHTML="";
- result.innerHTML="";
 
- s.o.forEach((x,i)=>{
-  let b=document.createElement("button");
-  b.className="option";b.innerHTML=x;
-  b.onclick=()=>checkAnswer(b,i);
-  options.appendChild(b);
- });
- showPage("quiz");
+  const station =
+    stationsData[currentStation];
+
+  challengeTitle.textContent =
+    "Challenge " +
+    (currentStation + 1);
+
+  questionBox.innerHTML =
+    station.question;
+
+  optionsBox.innerHTML = "";
+  resultBox.innerHTML = "";
+
+  station.options.forEach(
+    function(optionText,index){
+
+      const button =
+        document.createElement("button");
+
+      button.className = "option";
+      button.type = "button";
+      button.textContent =
+        optionText;
+
+      button.addEventListener(
+        "click",
+        function(){
+          checkAnswer(
+            button,
+            index
+          );
+        }
+      );
+
+      optionsBox.appendChild(
+        button
+      );
+
+    }
+  );
+
+  showPage("quiz");
 }
 
-function checkAnswer(btn,i){
- let s=stations[current];
- let bs=document.querySelectorAll(".option");
- bs.forEach(x=>x.disabled=true);
 
- if(i===s.a){
-  btn.classList.add("correct");
-  result.innerHTML="✅ Excellent! | إجابة صحيحة";
-  completed[current]=true;
-  localStorage.setItem("englishPassportCompleted",JSON.stringify(completed));
-  updateProgress();
-  setTimeout(()=>showPage("success"),800);
- }else{
-  btn.classList.add("wrong");
-  bs[s.a].classList.add("correct");
-  result.innerHTML="🌟 Try Again | حاول مرة أخرى";
-  setTimeout(()=>startChallenge(),1300);
- }
+/* ==============================
+   CHECK ANSWER
+============================== */
+
+function checkAnswer(
+  selectedButton,
+  selectedIndex
+){
+
+  const station =
+    stationsData[currentStation];
+
+  const buttons =
+    optionsBox.querySelectorAll(
+      ".option"
+    );
+
+  buttons.forEach(
+    function(button){
+      button.disabled = true;
+    }
+  );
+
+  if(
+    selectedIndex ===
+    station.answer
+  ){
+
+    selectedButton
+      .classList
+      .add("correct");
+
+    resultBox.innerHTML =
+      "✅ Excellent! | إجابة صحيحة";
+
+    completedStations[
+      currentStation
+    ] = true;
+
+    localStorage.setItem(
+      "englishPassportCompleted",
+      JSON.stringify(
+        completedStations
+      )
+    );
+
+    updateProgress();
+
+    setTimeout(
+      function(){
+        showPage("success");
+      },
+      700
+    );
+
+  }else{
+
+    selectedButton
+      .classList
+      .add("wrong");
+
+    buttons[
+      station.answer
+    ].classList.add(
+      "correct"
+    );
+
+    resultBox.innerHTML =
+      "🌟 Try Again | حاول مرة أخرى";
+
+    setTimeout(
+      function(){
+        startChallenge();
+      },
+      1200
+    );
+
+  }
 }
+
+
+/* ==============================
+   NEXT STATION
+============================== */
 
 function nextStation(){
- if(current<5)openLesson(current+1);
- else showPassport();
+
+  if(currentStation < 5){
+
+    openLesson(
+      currentStation + 1
+    );
+
+  }else{
+
+    showPassport();
+
+  }
 }
+
+
+/* ==============================
+   PROGRESS
+============================== */
 
 function updateProgress(){
- let n=completed.filter(Boolean).length;
- progressBar.style.width=(n/6*100)+"%";
- progressText.innerHTML=n+"/6 Completed | تم إكمال "+n+" من 6 محطات";
+
+  const completedCount =
+    completedStations.filter(
+      function(value){
+        return value === true;
+      }
+    ).length;
+
+  const percentage =
+    (completedCount / 6) * 100;
+
+  progressBar.style.width =
+    percentage + "%";
+
+  progressText.textContent =
+    completedCount +
+    "/6 Completed | تم إكمال " +
+    completedCount +
+    " من 6 محطات";
 }
+
+
+/* ==============================
+   PASSPORT
+============================== */
 
 function showPassport(){
- stampGrid.innerHTML="";
- stations.forEach((s,i)=>{
-  let d=document.createElement("div");
-  d.className="stampItem";
-  d.innerHTML=<div class="circle ${completed[i]?"done":""}">${completed[i]?"✓":"✈️"}</div><strong>${i+1}. ${s.en}</strong><br>${s.ar};
-  stampGrid.appendChild(d);
- });
 
- let n=completed.filter(Boolean).length;
- passportProgress.style.width=(n/6*100)+"%";
- passportProgressText.innerHTML=n+"/6 Completed | تم إكمال "+n+" من 6 محطات";
- finishButton.style.display=n===6?"block":"none";
- showPage("passportPage");
+  stampGrid.innerHTML = "";
+
+  stationsData.forEach(
+    function(station,index){
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "stampItem";
+
+      const circle =
+        document.createElement("div");
+
+      circle.className =
+        "circle";
+
+      if(
+        completedStations[index]
+      ){
+
+        circle.classList.add(
+          "done"
+        );
+
+        circle.textContent = "✓";
+
+      }else{
+
+        circle.textContent = "✈️";
+
+      }
+
+      const english =
+        document.createElement("strong");
+
+      english.textContent =
+        (index + 1) +
+        ". " +
+        station.en;
+
+      const breakLine =
+        document.createElement("br");
+
+      const arabic =
+        document.createTextNode(
+          station.ar
+        );
+
+      item.appendChild(circle);
+      item.appendChild(english);
+      item.appendChild(breakLine);
+      item.appendChild(arabic);
+
+      stampGrid.appendChild(item);
+
+    }
+  );
+
+  const completedCount =
+    completedStations.filter(
+      function(value){
+        return value === true;
+      }
+    ).length;
+
+  const percentage =
+    (completedCount / 6) * 100;
+
+  passportProgress.style.width =
+    percentage + "%";
+
+  passportProgressText.textContent =
+    completedCount +
+    "/6 Completed | تم إكمال " +
+    completedCount +
+    " من 6 محطات";
+
+  if(completedCount === 6){
+
+    finishButton.style.display =
+      "block";
+
+  }else{
+
+    finishButton.style.display =
+      "none";
+
+  }
+
+  showPage("passportPage");
 }
+
+
+/* ==============================
+   FINAL
+============================== */
 
 function showFinal(){
- finalName.innerHTML=localStorage.getItem("passportName")||"";
- showPage("final");
+
+  finalName.textContent =
+    localStorage.getItem(
+      "passportName"
+    ) || "";
+
+  showPage("final");
 }
+
+
+/* ==============================
+   PRINT
+============================== */
 
 function printPassport(){
- printName.innerHTML=localStorage.getItem("passportName")||"";
- printRelation.innerHTML=localStorage.getItem("passportRelation")||"";
- let d=localStorage.getItem("passportDate")||"";
- printDate.innerHTML=d ? "Start Date | تاريخ بدء الرحلة: "+d : "";
- window.print();
+
+  printName.textContent =
+    localStorage.getItem(
+      "passportName"
+    ) || "";
+
+  printRelation.textContent =
+    localStorage.getItem(
+      "passportRelation"
+    ) || "";
+
+  const savedDate =
+    localStorage.getItem(
+      "passportDate"
+    ) || "";
+
+  if(savedDate){
+
+    printDate.textContent =
+      "Start Date | تاريخ بدء الرحلة: " +
+      savedDate;
+
+  }else{
+
+    printDate.textContent = "";
+
+  }
+
+  setTimeout(
+    function(){
+      window.print();
+    },
+    100
+  );
 }
+
+
+/* ==============================
+   NEW PASSPORT
+============================== */
 
 function newPassport(){
- if(confirm("بدء جواز جديد؟ سيتم مسح تقدم المستخدم الحالي.")){
-  localStorage.removeItem("passportName");
-  localStorage.removeItem("passportRelation");
-  localStorage.removeItem("passportDate");
-  localStorage.removeItem("englishPassportCompleted");
-  completed=[false,false,false,false,false,false];
-  travelerName.value="";
-  relation.value="";
-  startDate.valueAsDate=new Date();
+
+  const answer =
+    confirm(
+      "بدء جواز جديد؟\nسيتم مسح تقدم المستخدم الحالي."
+    );
+
+  if(!answer){
+    return;
+  }
+
+  localStorage.removeItem(
+    "passportName"
+  );
+
+  localStorage.removeItem(
+    "passportRelation"
+  );
+
+  localStorage.removeItem(
+    "passportDate"
+  );
+
+  localStorage.removeItem(
+    "englishPassportCompleted"
+  );
+
+  completedStations =
+    [false,false,false,false,false,false];
+
+  travelerName.value = "";
+  relation.value = "";
+
+  setToday();
+
   updateProgress();
+
   showPage("cover");
- }
 }
 
-startDate.valueAsDate=new Date();
+
+/* ==============================
+   DATE
+============================== */
+
+function setToday(){
+
+  const today =
+    new Date();
+
+  const year =
+    today.getFullYear();
+
+  const month =
+    String(
+      today.getMonth() + 1
+    ).padStart(2,"0");
+
+  const day =
+    String(
+      today.getDate()
+    ).padStart(2,"0");
+
+  startDate.value =
+    year + "-" +
+    month + "-" +
+    day;
+}
+
+
+/* ==============================
+   BUTTON EVENTS
+============================== */
+
+document
+.getElementById(
+  "startJourneyBtn"
+)
+.addEventListener(
+  "click",
+  startJourney
+);
+
+
+document
+.querySelectorAll(
+  ".station"
+)
+.forEach(
+  function(stationElement){
+
+    stationElement
+    .addEventListener(
+      "click",
+      function(){
+
+        const stationNumber =
+          Number(
+            stationElement.dataset.station
+          );
+
+        openLesson(
+          stationNumber
+        );
+
+      }
+    );
+
+  }
+);
+
+
+document
+.getElementById(
+  "myPassportBtn"
+)
+.addEventListener(
+  "click",
+  showPassport
+);
+
+
+document
+.getElementById(
+  "backToStationsBtn"
+)
+.addEventListener(
+  "click",
+  function(){
+    showPage("stations");
+  }
+);
+
+
+document
+.getElementById(
+  "challengeBtn"
+)
+.addEventListener(
+  "click",
+  startChallenge
+);
+
+
+document
+.getElementById(
+  "backToLessonBtn"
+)
+.addEventListener(
+  "click",
+  function(){
+    showPage("lesson");
+  }
+);
+
+
+document
+.getElementById(
+  "nextStationBtn"
+)
+.addEventListener(
+  "click",
+  nextStation
+);
+
+
+document
+.getElementById(
+  "passportBackBtn"
+)
+.addEventListener(
+  "click",
+  function(){
+    showPage("stations");
+  }
+);
+
+
+finishButton
+.addEventListener(
+  "click",
+  showFinal
+);
+
+
+document
+.getElementById(
+  "printBtn"
+)
+.addEventListener(
+  "click",
+  printPassport
+);
+
+
+document
+.getElementById(
+  "newPassportBtn"
+)
+.addEventListener(
+  "click",
+  newPassport
+);
+
+
+/* ==============================
+   INITIALIZE
+============================== */
+
+setToday();
 updateProgress();
+
 </script>
 
 </body>
